@@ -28,4 +28,10 @@ public class UsersServices {
         return usersRepository.save(user);
     }
 
+    
+    public Users findUsers(String email) throws Exception {
+
+        return usersRepository.findByEmail(email);
+    }
+
 }

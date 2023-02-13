@@ -1,8 +1,6 @@
 package com.example.api_immobilier.app.controllers;
 
-import java.util.Collections;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,7 +9,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
+import org.springframework.http.HttpStatus;
 
+import com.example.api_immobilier.app.models.ResponseData;
 import com.example.api_immobilier.app.models.Users;
 import com.example.api_immobilier.app.services.UsersServices;
 
@@ -26,10 +27,6 @@ public class UsersController {
     @Autowired
     private UsersServices usersServices;
 
-    // @GetMapping("/")
-    // public Map<String, Object> greeting() {
-    // return Collections.singletonMap("message", "Hello, World");
-    // }
     @Operation(summary = "Get All user")
     @GetMapping("/users")
     public List<Users> getAll() {
@@ -46,17 +43,29 @@ public class UsersController {
     @PostMapping("/user")
     public Object create(@RequestBody Users user) throws Exception {
         Object result = new Object();
-        // if (Integer.parseInt(user.getTypeUser()) == 0 ||
-        // Integer.parseInt(user.getTypeUser()) == 1) {
-        // result = usersServices.createOrUpdate(user);
-        // } else {
-        // result = Collections.singletonMap("message", "le type d'utilisateur n'existe
-        // pas");
-        // }
-
         result = usersServices.createOrUpdate(user);
 
         return result;
+    }
+
+    @Operation(summary = "Get User By Email")
+    @PostMapping("/user/email")
+    public Object getUserByEmail(@RequestBody Users users) throws Exception {
+        Object result = new Object();
+
+        try {
+            result = usersServices.findUsers(users.getEmail());
+
+            if (result == null) {
+                return new ResponseData("L'utilisateur n'existe pas", false, result);
+            }
+
+            return new ResponseData("Récuperation des informations de l'utilisateur", true, result);
+        } catch (Exception err) {
+            // System.out.println(err.getMessage());
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, err.getMessage(), err);
+        }
+
     }
 
     @Operation(summary = "Update user")

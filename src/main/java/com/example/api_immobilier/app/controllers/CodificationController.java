@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 import com.example.api_immobilier.app.models.Codification;
+import com.example.api_immobilier.app.models.ResponseData;
 import com.example.api_immobilier.app.services.CodificationService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -37,7 +38,13 @@ public class CodificationController {
     @Operation(summary = "Get By id")
     @GetMapping("/codifications/{id}")
     public Object getByIdCodification(@PathVariable Long id) {
-        return Collections.singletonMap("data", codificationService.getById(id));
+        Object result = new Object();
+        result = codificationService.getById(id);
+
+        if (result == null) {
+            new ResponseData("La codification n'existe pas", false, result);
+        }
+        return new ResponseData("", true, result);
     }
 
     @Operation(summary = "Get by code_localisation")
