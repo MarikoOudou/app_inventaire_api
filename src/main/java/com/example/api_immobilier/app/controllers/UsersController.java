@@ -50,12 +50,14 @@ public class UsersController {
 
     @Operation(summary = "Get User By Email")
     @PostMapping("/user/email")
-    public Object getUserByEmail(@RequestBody Users users) throws Exception {
+    public ResponseData getUserByEmail(@RequestBody Users users) throws Exception {
         Object result = new Object();
 
         try {
             result = usersServices.findUsers(users.getEmail());
-
+            System.out.println("--------------------------------------------------------------------");
+            System.out.println(users.toString());
+            System.out.println("--------------------------------------------------------------------");
             if (result == null) {
                 return new ResponseData("L'utilisateur n'existe pas", false, result);
             }
