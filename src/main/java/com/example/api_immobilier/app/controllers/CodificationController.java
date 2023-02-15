@@ -55,8 +55,13 @@ public class CodificationController {
 
     @Operation(summary = "Get by n° inventaire")
     @GetMapping("/codifications/n_inventaire/{n_inventaire}")
-    public Object getByNInventaireCodification(@PathVariable String n_inventaire) throws Exception {
-        return Collections.singletonMap("data", codificationService.getByNInventaire(n_inventaire));
+    public ResponseData getByNInventaireCodification(@PathVariable String n_inventaire) throws Exception {
+        System.out.println(n_inventaire);
+        Object result = codificationService.getByNInventaire(n_inventaire);
+        if (result == null) {
+            return new ResponseData("Le numero inventaire n'existe pas", false, result);
+        }
+        return new ResponseData("la codification existe", true, result);
     }
 
     @Operation(summary = "Create multiple codification")
