@@ -1,6 +1,8 @@
 package com.example.api_immobilier.app.controllers;
 
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.api_immobilier.app.models.PeriodeInventaire;
+import com.example.api_immobilier.app.models.ResponseData;
 import com.example.api_immobilier.app.services.PeriodeInventaireService;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -26,10 +29,20 @@ public class PeriodeInventaireController {
     @Autowired
     private PeriodeInventaireService periodeInventaireService;
 
-    @Operation(summary = "Get All periode inentaire")
+    @Operation(summary = "Get All periode inventaire")
     @GetMapping("/periodeinentaire")
-    public Object getAllPeriodeInventaire() {
-        return Collections.singletonMap("data", periodeInventaireService.getAll());
+    public ResponseData getAllPeriodeInventaire() {
+        Object result = new Object();
+        result = periodeInventaireService.getAll();
+        return new ResponseData("liste des periode inventaire", true, (List<PeriodeInventaire>) result);
+    }
+
+    @Operation(summary = "Get periode inventaire is active")
+    @GetMapping("/periodeinentaire/isactive")
+    public ResponseData<PeriodeInventaire> getPeriodeInventaireIsActive() {
+        Object result = new Object();
+        result = periodeInventaireService.getIsActive();
+        return new ResponseData("periode inventaire active", true, result);
     }
 
     @Operation(summary = "Get by id")
@@ -38,18 +51,21 @@ public class PeriodeInventaireController {
         return Collections.singletonMap("data", periodeInventaireService.getById(id));
     }
 
-    @Operation(summary = "Create periode inentaire")
+    @Operation(summary = "Create periode inventaire")
     @PostMapping("/periodeinentaire")
     public Object createPeriodeInventaire(@RequestBody PeriodeInventaire periodeInventaire) throws Exception {
         Object result = new Object();
 
+ 
+
         result = periodeInventaireService.createOrUpdate(periodeInventaire);
         // System.out.println("---------------------" + periodeInventaire.toString());
 
-        return Collections.singletonMap("data", result);
+        return new ResponseData("", true, result);
     }
 
-    @Operation(summary = "Update periode inentaire")
+
+    @Operation(summary = "Update periode inventaire")
     @PutMapping("/periodeinentaire/{id}")
     public Object updatePeriodeInventaire(@RequestBody PeriodeInventaire periodeInventaire, @PathVariable Long id)
             throws Exception {

@@ -1,12 +1,12 @@
 package com.example.api_immobilier.app.models;
 
-public class ResponseData {
+public class ResponseData<T> {
     private String message;
     private boolean status;
-    private Object data;
+    private T data;
     public ResponseData() {
     }
-    public ResponseData(String message, boolean status, Object data) {
+    public ResponseData(String message, boolean status, T data) {
         this.message = message;
         this.status = status;
         this.data = data;
@@ -26,7 +26,7 @@ public class ResponseData {
     public Object getData() {
         return data;
     }
-    public void setData(Object data) {
+    public void setData(T data) {
         this.data = data;
     }
 }

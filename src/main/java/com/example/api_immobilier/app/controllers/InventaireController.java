@@ -16,6 +16,7 @@ import org.springframework.web.server.ResponseStatusException;
 import com.example.api_immobilier.app.models.Codification;
 import com.example.api_immobilier.app.models.Inventaire;
 import com.example.api_immobilier.app.models.PeriodeInventaire;
+import com.example.api_immobilier.app.models.ResponseData;
 import com.example.api_immobilier.app.services.CodificationService;
 import com.example.api_immobilier.app.services.InventaireService;
 import com.example.api_immobilier.app.services.PeriodeInventaireService;
@@ -47,6 +48,24 @@ public class InventaireController {
     @GetMapping("/inventaires/{id_periode_inventaire}")
     public Object getByPeriode(@PathVariable Long id_periode_inventaire) {
         return Collections.singletonMap("data", inventaireService.getByPeriode(id_periode_inventaire));
+    }
+
+    @Operation(summary = "Get inventaire by codification and periode")
+    @GetMapping("/inventaires/codification/{id_codification}/periodeinventaire/{id_periode_inventaire}")
+    public ResponseData getInventaireByCodificationAndPeriodeInventaire(
+            @PathVariable Long id_codification,
+            @PathVariable Long id_periode_inventaire) {
+        Object result = new Object();
+
+        result = inventaireService.getByCodificationAndPeriodeInventaire(
+                id_codification,
+                id_periode_inventaire);
+
+        if (result == null) {
+            return new ResponseData("", false, result);
+        }
+
+        return new ResponseData("", true, result);
     }
 
     @Operation(summary = "Get by id")
