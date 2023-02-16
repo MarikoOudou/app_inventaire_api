@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.api_immobilier.app.models.Inventaire;
+import com.example.api_immobilier.app.models.InventaireImpl;
 import com.example.api_immobilier.app.models.PeriodeInventaire;
 import com.example.api_immobilier.app.repositorys.InventaireRepository;
 
@@ -29,7 +30,7 @@ public class InventaireService {
         return inventaireRepository.findById(id).orElse(null);
     }
 
-    public Inventaire getByCodificationAndPeriodeInventaire(Long id_codifiction, Long id_periode_inventaire) {
+    public InventaireImpl getByCodificationAndPeriodeInventaire(Long id_codifiction, Long id_periode_inventaire) {
         System.out.println("********************** " + id_periode_inventaire + " " + id_codifiction);
 
         return inventaireRepository.findInventaireExitant(id_periode_inventaire, id_codifiction);
