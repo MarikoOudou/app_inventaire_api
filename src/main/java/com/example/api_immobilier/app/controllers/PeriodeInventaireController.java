@@ -39,7 +39,7 @@ public class PeriodeInventaireController {
 
     @Operation(summary = "Get periode inventaire is active")
     @GetMapping("/periodeinentaire/isactive")
-    public ResponseData<PeriodeInventaire> getPeriodeInventaireIsActive() {
+    public ResponseData getPeriodeInventaireIsActive() {
         Object result = new Object();
         result = periodeInventaireService.getIsActive();
         return new ResponseData("periode inventaire active", true, result);
@@ -56,14 +56,11 @@ public class PeriodeInventaireController {
     public Object createPeriodeInventaire(@RequestBody PeriodeInventaire periodeInventaire) throws Exception {
         Object result = new Object();
 
- 
-
         result = periodeInventaireService.createOrUpdate(periodeInventaire);
         // System.out.println("---------------------" + periodeInventaire.toString());
 
         return new ResponseData("", true, result);
     }
-
 
     @Operation(summary = "Update periode inventaire")
     @PutMapping("/periodeinentaire/{id}")

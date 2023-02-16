@@ -62,10 +62,10 @@ public class InventaireController {
                 id_periode_inventaire);
 
         if (result == null) {
-            return new ResponseData("", false, result);
+            return new ResponseData("L'inventaire n'est pas fait.", true, result);
         }
 
-        return new ResponseData("", true, result);
+        return new ResponseData("L'inventaire est déjà fait.", false, result);
     }
 
     @Operation(summary = "Get by id")
@@ -76,7 +76,7 @@ public class InventaireController {
 
     @Operation(summary = "Create inventaire")
     @PostMapping("/inventaire")
-    public Object createInventaire(@RequestBody Inventaire inventaire) throws Exception {
+    public ResponseData createInventaire(@RequestBody Inventaire inventaire) throws Exception {
 
         try {
             Object result = new Object();
@@ -84,13 +84,15 @@ public class InventaireController {
             result = codificationService.getById(inventaire.getCodification().getId_codification());
 
             if (result == null) {
-                return Collections.singletonMap("message", "La codification n'exite pas");
+                return new ResponseData("La codification n'exite pas", false, result);
             }
 
             result = periodeInventaireService.getById(inventaire.getPeriodeInventaire().getId_periode_inventaire());
 
             if (result == null) {
-                return Collections.singletonMap("message", "La periode n'exite pas");
+                // return Collections.singletonMap("message", "La periode n'exite pas");
+                return new ResponseData("La periode n'exite pas", false, result);
+
             }
 
             result = inventaireService.getByCodificationAndPeriodeInventaire(
@@ -98,12 +100,15 @@ public class InventaireController {
                     inventaire.getPeriodeInventaire().getId_periode_inventaire());
             System.out.println("********************** " + result);
             if (result != null) {
-                return Collections.singletonMap("message", "Vous avez deja faire l'inventaire de ce meuble!");
+                // return Collections.singletonMap("message", "Vous avez deja faire l'inventaire de ce meuble!");
+                return new ResponseData("Vous avez deja faire l'inventaire de ce meuble!", false, result);
+
             }
 
             result = inventaireService.createOrUpdate(inventaire);
+            return new ResponseData("L'inventaire a été éffectué avec succes", true, result);
 
-            return Collections.singletonMap("data", result);
+            // return Collections.singletonMap("data", result);
         } catch (Exception err) {
             System.out.println(err.getMessage());
             throw new ResponseStatusException(

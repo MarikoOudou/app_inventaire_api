@@ -56,7 +56,7 @@ public class CodificationController {
     @Operation(summary = "Get by n° inventaire")
     @GetMapping("/codifications/n_inventaire/{n_inventaire}")
     public ResponseData getByNInventaireCodification(@PathVariable String n_inventaire) throws Exception {
-        System.out.println(n_inventaire);
+        System.out.println("N°Inventaire to get : " + n_inventaire);
         Object result = codificationService.getByNInventaire(n_inventaire);
         if (result == null) {
             return new ResponseData("Le numero inventaire n'existe pas", false, result);

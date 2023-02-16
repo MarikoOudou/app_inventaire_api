@@ -21,15 +21,15 @@ public class Inventaire {
     @Nullable
     private Date date_inventaire;
 
-    @ManyToOne(cascade = CascadeType.MERGE)
+    @ManyToOne(cascade = CascadeType.DETACH)
     @JoinColumn(name = "id_codification", nullable = false)
     Codification codification;
 
-    @ManyToOne(cascade = CascadeType.MERGE)
+    @ManyToOne(cascade = CascadeType.DETACH)
     @JoinColumn(name = "id_periode_inventaire", nullable = false)
     PeriodeInventaire periodeInventaire;
 
-    @ManyToOne(cascade = CascadeType.MERGE)
+    @ManyToOne(cascade = CascadeType.DETACH)
     @JoinColumn(name = "userId", nullable = true)
     Users user;
 
