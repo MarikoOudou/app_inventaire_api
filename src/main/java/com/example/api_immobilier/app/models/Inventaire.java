@@ -104,11 +104,11 @@ public class Inventaire {
         this.periodeInventaire = periodeInventaire;
     }
 
-    // public Users getUser() {
-    // return user;
-    // }
+    public Users getUser() {
+        return user;
+    }
 
-    // public void setUser(Users user) {
-    // this.user = user;
-    // }
+    public void setUser(Users user) {
+        this.user = user;
+    }
 }
