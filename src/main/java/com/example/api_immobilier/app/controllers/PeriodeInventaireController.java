@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -42,6 +43,9 @@ public class PeriodeInventaireController {
     public ResponseData getPeriodeInventaireIsActive() {
         Object result = new Object();
         result = periodeInventaireService.getIsActive();
+        if (result == null) {
+            return new ResponseData("Il n'existe pas de période d'inventaire", false, result);
+        }
         return new ResponseData("periode inventaire active", true, result);
     }
 
@@ -77,6 +81,23 @@ public class PeriodeInventaireController {
         result = periodeInventaireService.createOrUpdate(periodeInventaire);
 
         return Collections.singletonMap("data", result);
+    }
+
+    @Operation(summary = "Update periode by isActive")
+    @PatchMapping("/periodeinentaire/activeordiseable/{id}")
+    public ResponseData activeOrDiseable(@RequestBody PeriodeInventaire periodeInventaire, @PathVariable Long id)
+            throws Exception {
+        Object result = new Object();
+        result = periodeInventaireService.getById(id);
+
+        if (result == null) {
+            return new ResponseData("L'inventaire n'exite pas! ", false, result);
+        }
+
+        periodeInventaire.setId_periode_inventaire(id);
+        result = periodeInventaireService.activeOrDiseable(periodeInventaire);
+
+        return new ResponseData("L'inventaire n'exite pas! ", true, result);
     }
 
 }

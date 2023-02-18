@@ -21,4 +21,7 @@ public interface InventaireRepository extends JpaRepository<Inventaire, Long> {
             @Param("id_periode_inventaire") Long id_periode_inventaire,
             @Param("id_codification") Long id_codification);
 
+    @Query(value = "SELECT * FROM inventaire ORDER BY date_inventaire DESC", nativeQuery = true)
+    List<InventaireImpl> findAllByOrderDate();
+
 }

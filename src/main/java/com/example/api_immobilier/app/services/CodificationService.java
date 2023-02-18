@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.example.api_immobilier.app.models.Codification;
@@ -16,7 +17,7 @@ public class CodificationService {
     private CodificationRepository codificationRepository;
 
     public List<Codification> getAll() {
-        return codificationRepository.findAll();
+        return codificationRepository.findAllByOrderDate();
     }
 
     public Object getByCodification(String code_localisation) {

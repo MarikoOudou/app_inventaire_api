@@ -13,6 +13,11 @@ import com.example.api_immobilier.app.models.Codification;
 public interface CodificationRepository extends JpaRepository<Codification, Long> {
     Codification findByCodeLocalisation(String code_localisation);
 
+    // SELECT * FROM foo ORDER BY foo_date DESC
+
+    @Query(value = "SELECT * FROM codification ORDER BY id_codification DESC", nativeQuery = true)
+    List<Codification> findAllByOrderDate();
+
     @Query(value = "SELECT * FROM codification WHERE n_inventaire = :n_inventaire", nativeQuery = true)
     Codification findByN_inventaire(@Param("n_inventaire") String n_inventaire);
 }
