@@ -1,4 +1,4 @@
-package com.example.api_immobilier.app.controllers;
+package com.example.api_immobilier.controllers;
 
 import java.util.Collections;
 
@@ -13,13 +13,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
-import com.example.api_immobilier.app.models.Codification;
-import com.example.api_immobilier.app.models.Inventaire;
-import com.example.api_immobilier.app.models.PeriodeInventaire;
-import com.example.api_immobilier.app.models.ResponseData;
-import com.example.api_immobilier.app.services.CodificationService;
-import com.example.api_immobilier.app.services.InventaireService;
-import com.example.api_immobilier.app.services.PeriodeInventaireService;
+import com.example.api_immobilier.models.Codification;
+import com.example.api_immobilier.models.Inventaire;
+import com.example.api_immobilier.models.PeriodeInventaire;
+import com.example.api_immobilier.models.ResponseData;
+import com.example.api_immobilier.services.CodificationService;
+import com.example.api_immobilier.services.InventaireService;
+import com.example.api_immobilier.services.PeriodeInventaireService;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;

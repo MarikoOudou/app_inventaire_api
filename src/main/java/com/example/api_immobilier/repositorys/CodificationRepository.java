@@ -1,4 +1,4 @@
-package com.example.api_immobilier.app.repositorys;
+package com.example.api_immobilier.repositorys;
 
 import java.util.List;
 
@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import com.example.api_immobilier.app.models.Codification;
+import com.example.api_immobilier.models.Codification;
 
 @Repository
 public interface CodificationRepository extends JpaRepository<Codification, Long> {

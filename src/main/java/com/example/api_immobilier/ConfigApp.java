@@ -1,4 +1,4 @@
-package com.example.api_immobilier.app;
+package com.example.api_immobilier;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.transaction.annotation.EnableTransactionManagement;

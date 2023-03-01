@@ -1,4 +1,4 @@
-package com.example.api_immobilier.app.models;
+package com.example.api_immobilier.models;
 
 public class ResponseData<T> {
     private String message;

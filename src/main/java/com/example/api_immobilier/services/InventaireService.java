@@ -1,14 +1,14 @@
-package com.example.api_immobilier.app.services;
+package com.example.api_immobilier.services;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.api_immobilier.app.models.Inventaire;
-import com.example.api_immobilier.app.models.InventaireImpl;
-import com.example.api_immobilier.app.models.PeriodeInventaire;
-import com.example.api_immobilier.app.repositorys.InventaireRepository;
+import com.example.api_immobilier.models.Inventaire;
+import com.example.api_immobilier.models.InventaireImpl;
+import com.example.api_immobilier.models.PeriodeInventaire;
+import com.example.api_immobilier.repositorys.InventaireRepository;
 
 @Service
 public class InventaireService {

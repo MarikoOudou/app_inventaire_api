@@ -1,4 +1,4 @@
-package com.example.api_immobilier.app.models;
+package com.example.api_immobilier.models;
 
 import java.util.Date;
 import java.util.Set;

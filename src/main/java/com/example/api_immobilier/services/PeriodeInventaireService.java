@@ -1,4 +1,4 @@
-package com.example.api_immobilier.app.services;
+package com.example.api_immobilier.services;
 
 import java.util.List;
 
@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import com.example.api_immobilier.app.models.PeriodeInventaire;
-import com.example.api_immobilier.app.repositorys.PeriodeInventaireRepository;
+import com.example.api_immobilier.models.PeriodeInventaire;
+import com.example.api_immobilier.repositorys.PeriodeInventaireRepository;
 
 import jakarta.transaction.Transactional;
 

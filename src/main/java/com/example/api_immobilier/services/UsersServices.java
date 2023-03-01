@@ -1,9 +1,9 @@
-package com.example.api_immobilier.app.services;
+package com.example.api_immobilier.services;
 
 import org.springframework.stereotype.Service;
 
-import com.example.api_immobilier.app.models.Users;
-import com.example.api_immobilier.app.repositorys.UsersRepository;
+import com.example.api_immobilier.models.Users;
+import com.example.api_immobilier.repositorys.UsersRepository;
 
 import java.util.List;
 

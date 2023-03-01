@@ -1,4 +1,4 @@
-package com.example.api_immobilier.app.repositorys;
+package com.example.api_immobilier.repositorys;
 
 import java.util.List;
 
@@ -7,9 +7,9 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import com.example.api_immobilier.app.models.Inventaire;
-import com.example.api_immobilier.app.models.InventaireImpl;
-import com.example.api_immobilier.app.models.PeriodeInventaire;
+import com.example.api_immobilier.models.Inventaire;
+import com.example.api_immobilier.models.InventaireImpl;
+import com.example.api_immobilier.models.PeriodeInventaire;
 
 @Repository
 public interface InventaireRepository extends JpaRepository<Inventaire, Long> {

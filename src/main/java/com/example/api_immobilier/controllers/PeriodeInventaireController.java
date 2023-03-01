@@ -1,4 +1,4 @@
-package com.example.api_immobilier.app.controllers;
+package com.example.api_immobilier.controllers;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.api_immobilier.app.models.PeriodeInventaire;
-import com.example.api_immobilier.app.models.ResponseData;
-import com.example.api_immobilier.app.services.PeriodeInventaireService;
+import com.example.api_immobilier.models.PeriodeInventaire;
+import com.example.api_immobilier.models.ResponseData;
+import com.example.api_immobilier.services.PeriodeInventaireService;
 
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.web.bind.annotation.RequestBody;

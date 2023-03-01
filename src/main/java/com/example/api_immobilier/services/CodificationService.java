@@ -1,4 +1,4 @@
-package com.example.api_immobilier.app.services;
+package com.example.api_immobilier.services;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,8 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import com.example.api_immobilier.app.models.Codification;
-import com.example.api_immobilier.app.repositorys.CodificationRepository;
+import com.example.api_immobilier.models.Codification;
+import com.example.api_immobilier.repositorys.CodificationRepository;
 
 @Service
 public class CodificationService {
