@@ -37,6 +37,7 @@ Route::post('codifications', [CodificationController::class, 'stores']);
 Route::put('codifications/{id}', [CodificationController::class, 'update']);
 
 Route::get('periodeinentaire', [PeriodeInventaireController::class, 'index']);
+Route::get('periodeinentaire/isactive', [PeriodeInventaireController::class, 'periodeInventaireIsActive']);
 Route::get('periodeinentaire/{id}', [PeriodeInventaireController::class, 'show']);
 Route::post('periodeinentaire', [PeriodeInventaireController::class, 'store']);
 Route::put('periodeinentaire/{id}', [PeriodeInventaireController::class, 'update']);

@@ -16,7 +16,9 @@ return new class extends Migration
             $table->string('etat')->nullable();
             $table->string('nom_agent')->nullable();
             $table->string('observations')->nullable();
-            $table->string('date_inventaire')->nullable();
+            $table->date('date_inventaire')->nullable();
+            $table->string('libelle_localisation')->nullable();
+            $table->string('code_localisation')->nullable();
 
             $table->unsignedBigInteger('id_codification')->unsigned();
             $table->foreign('id_codification')->references('id')->on('codifications')->onDelete('cascade');

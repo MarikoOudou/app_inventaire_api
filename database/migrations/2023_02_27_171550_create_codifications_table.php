@@ -14,6 +14,11 @@ return new class extends Migration
         Schema::create('codifications', function (Blueprint $table) {
             $table->id();
             $table->string('n_inventaire')->unique()->nullable();
+            $table->string('libelle_immo')->nullable();
+            $table->string('code_localisation')->nullable();
+            $table->string('libelle_localisation')->nullable();
+            $table->text('libelle_complementaire')->nullable();
+
             $table->string('code_guichet')->nullable();
             $table->string('departement')->nullable();
             $table->string('n_serie')->nullable();
@@ -24,9 +29,7 @@ return new class extends Migration
             $table->string('niveau')->nullable();
             $table->string('service')->nullable();
             $table->string('sous_famille')->nullable();
-            $table->string('code_localisation')->nullable();
             $table->string('libelle_agence')->nullable();
-            $table->string('libelle_localisation')->nullable();
 
             $table->timestamps();
         });

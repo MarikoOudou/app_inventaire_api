@@ -24,6 +24,7 @@ class StorecodificationRequest extends FormRequest
         return [
             //
             'n_inventaire' => 'required',
+            
             'code_guichet',
             'departement',
             'n_serie',

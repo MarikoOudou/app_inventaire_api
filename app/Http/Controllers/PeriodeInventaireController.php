@@ -22,7 +22,53 @@ class PeriodeInventaireController extends Controller
     {
         //
         try {
-            return self::sendResponse(true, Response::HTTP_OK, "", PeriodeInventaire::all());
+            return self::sendResponse(true, Response::HTTP_OK, "", PeriodeInventaire::all()->map(
+                function (PeriodeInventaire $periodeInventaire) {
+
+
+                    if (!$periodeInventaire['isActive']) {
+                        $periodeInventaire['isActive'] = false;
+                    } else {
+                        $periodeInventaire['isActive'] = true;
+                    }
+
+                    return $periodeInventaire;
+                }
+            ));
+        } catch (Exception $e) {
+            return $this->sendResponse(false, Response::HTTP_FOUND, $e->getMessage());
+        }
+    }
+
+    public function periodeInventaireIsActive () {
+        try {
+            $periodeInventaire = PeriodeInventaire::where('isActive', '=', 1)->first();
+
+            if ($periodeInventaire == null) {
+                return self::sendResponse(false, Response::HTTP_NOT_FOUND, "Il n'existe pas de période d'inventaire", $periodeInventaire );
+            } else {
+                return self::sendResponse(true, Response::HTTP_OK, "periode inventaire active", tap(
+                    $periodeInventaire,
+                        (function (PeriodeInventaire $periodeInventaire) {
+
+                            $periodeInventaire['id_periode_inventaire'] = $periodeInventaire->id;
+
+
+                        if (!$periodeInventaire['isActive']) {
+                            $periodeInventaire['isActive'] = false;
+                        } else {
+                            $periodeInventaire['isActive'] = true;
+                        }
+
+
+                            return $periodeInventaire;
+                        })
+                )
+            );
+            }
+
+
+
         } catch (Exception $e) {
             return $this->sendResponse(false, Response::HTTP_FOUND, $e->getMessage());
         }
@@ -73,7 +119,21 @@ class PeriodeInventaireController extends Controller
     {
         //
         try {
-            return self::sendResponse(true, Response::HTTP_OK, "", PeriodeInventaire::findOrFail($id));
+            return self::sendResponse(true, Response::HTTP_OK, "", tap(
+                PeriodeInventaire::findOrFail($id),
+                function (PeriodeInventaire $periodeInventaire) {
+
+                    $periodeInventaire['id_periode_inventaire'] = $periodeInventaire->id;
+
+
+                if (!$periodeInventaire['isActive']) {
+                    $periodeInventaire['isActive'] = false;
+                } else {
+                    $periodeInventaire['isActive'] = true;
+                }
+                     return $periodeInventaire;
+                }
+            ));
         } catch (QueryException $e) {
             return $this->sendResponse(false, Response::HTTP_BAD_REQUEST, $e->getMessage());
         } catch (Exception $e) {
@@ -96,14 +156,14 @@ class PeriodeInventaireController extends Controller
                 'date_fin'=> 'required',
             ]);
 
-            $getAll = PeriodeInventaire::all();
+            // $getAll = PeriodeInventaire::all();
 
-            if ($getAll->count() > 0) {
-                foreach ($getAll as $key => $value) {
-                    $value['isActive'] = false;
-                    $value->save();
-                }
-            }
+            // if ($getAll->count() > 0) {
+            //     foreach ($getAll as $key => $value) {
+            //         $value['isActive'] = false;
+            //         $value->save();
+            //     }
+            // }
 
             $periodeInventaire = PeriodeInventaire::findOrFail($id);
             $periodeInventaire->update($request->all());
@@ -170,4 +230,5 @@ class PeriodeInventaireController extends Controller
     {
         //
     }
+
 }

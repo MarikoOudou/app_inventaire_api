@@ -13,7 +13,26 @@ use Illuminate\Validation\ValidationException;
 class UsersController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * @OA\Get(
+     *      path="/users",
+     *      operationId="getAllUser",
+     *      tags={"Users"},
+     *      summary="Get list of user",
+     *      description="",
+     *      @OA\Response(
+     *          response=200,
+     *          description="Successful operation",
+     *          @OA\JsonContent()
+     *       ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated",
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *      )
+     *     )
      */
     public function index()
     {
@@ -75,7 +94,22 @@ class UsersController extends Controller
             $this->validate($request, [
                 'email' => 'required'
             ]);
-            return self::sendResponse(true, Response::HTTP_OK, "", User::where('email', '=', $request['email'])->firstOrFail());
+
+            $user = User::where('email', '=', $request['email'])->first();
+
+            if ($user == null) {
+                return self::sendResponse(false, Response::HTTP_NOT_FOUND, "L'utilisateur n'existe pas", $user);
+            } else {
+                return self::sendResponse(true, Response::HTTP_OK, "Récuperation des informations de l'utilisateur", tap($user,
+                (function (User $users) {
+                    $users["userId"] = $users->id;
+                    return $users;
+                })
+                ) );
+            }
+
+
+
         } catch (QueryException $e) {
             return $this->sendResponse(false, Response::HTTP_BAD_REQUEST, $e->getMessage());
         } catch (Exception $e) {
@@ -114,4 +148,5 @@ class UsersController extends Controller
     {
         //
     }
+
 }

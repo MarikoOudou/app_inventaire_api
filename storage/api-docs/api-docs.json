@@ -1,0 +1,674 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Laravel OpenApi Demo Documentation",
+        "description": "L5 Swagger OpenApi description",
+        "contact": {
+            "email": "oudoumariko@gmail.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://127.0.0.1:8000/api",
+            "description": "Demo API Server"
+        }
+    ],
+    "paths": {
+        "codifications": {
+            "get": {
+                "tags": [
+                    "codifications"
+                ],
+                "summary": "Get codifications information",
+                "description": "Returns data",
+                "operationId": "getAllCodification",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/codification": {
+            "post": {
+                "tags": [
+                    "codifications"
+                ],
+                "summary": "Create codification",
+                "description": "Returns response",
+                "operationId": "createCodification",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/codification"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/codifications": {
+            "post": {
+                "tags": [
+                    "codifications"
+                ],
+                "summary": "Create full codification",
+                "description": "Returns response",
+                "operationId": "createsCodification",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/codification"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "codifications/{id}": {
+            "get": {
+                "tags": [
+                    "codifications"
+                ],
+                "summary": "Get codification information",
+                "description": "Returns data",
+                "operationId": "getByIdCodification",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "codification id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "codifications/n_inventaire/{n_inventaire}": {
+            "get": {
+                "tags": [
+                    "codifications"
+                ],
+                "summary": "Get codification information",
+                "description": "Returns data",
+                "operationId": "getCodificationByNInventaire",
+                "parameters": [
+                    {
+                        "name": "n° inventaire",
+                        "in": "path",
+                        "description": "codification n_inventaire",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/codifications/{id}": {
+            "put": {
+                "tags": [
+                    "codifications"
+                ],
+                "summary": "Update existing codification",
+                "description": "Returns response",
+                "operationId": "updateCodification",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "codification id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/codification"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/inventaires": {
+            "get": {
+                "tags": [
+                    "inventaire"
+                ],
+                "summary": "Get inventaires information",
+                "description": "Returns data",
+                "operationId": "getAllInventaire",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/inventaire": {
+            "post": {
+                "tags": [
+                    "inventaire"
+                ],
+                "summary": "Create inventaire",
+                "description": "Returns response",
+                "operationId": "createInventaire",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Inventaire"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/inventaire/{id}": {
+            "get": {
+                "tags": [
+                    "inventaire"
+                ],
+                "summary": "Get inventaire information",
+                "description": "Returns data",
+                "operationId": "getByIdInventaire",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "inventaire id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "inventaire"
+                ],
+                "summary": "Update existing inventaire",
+                "description": "Returns response",
+                "operationId": "updateInventaire",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "inventaire id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Inventaire"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/inventaires/{id_periode_inventaire}": {
+            "get": {
+                "tags": [
+                    "inventaire"
+                ],
+                "summary": "Get inventaire information",
+                "description": "Returns data",
+                "operationId": "getByIdPeriodeInventaire",
+                "parameters": [
+                    {
+                        "name": "id periode inventaire",
+                        "in": "path",
+                        "description": "inventaire id_periode_inventaire",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/inventaires/codification/{id_codification}/periodeinventaire/{id_periode_inventaire}": {
+            "get": {
+                "tags": [
+                    "inventaire"
+                ],
+                "summary": "Get inventaire information",
+                "description": "Returns data",
+                "operationId": "getInventaireByCodificationAndPeriodeInventaire",
+                "parameters": [
+                    {
+                        "name": "id codification",
+                        "in": "path",
+                        "description": "inventaire id_codification",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "id periode inventaire",
+                        "in": "path",
+                        "description": "inventaire id_periode_inventaire",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/users": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Get list of user",
+                "description": "",
+                "operationId": "getAllUser",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Inventaire": {
+                "title": "Inventaire",
+                "description": "",
+                "properties": {
+                    "id": {
+                        "title": "Identifiant",
+                        "type": "integer"
+                    },
+                    "etat": {
+                        "title": "etat",
+                        "type": "string"
+                    },
+                    "nom_agent": {
+                        "title": "Nom agent",
+                        "type": "string"
+                    },
+                    "observations": {
+                        "title": "Nom agent",
+                        "type": "string"
+                    },
+                    "id_codification": {
+                        "title": "codification ",
+                        "type": "string"
+                    },
+                    "id_periode_inventaire": {
+                        "title": "Identifiant inentaire periode",
+                        "type": "string"
+                    },
+                    "userId": {
+                        "title": "Identifiant user",
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Inventaire"
+                }
+            },
+            "User": {
+                "title": "Users",
+                "description": "Users model",
+                "properties": {
+                    "id": {
+                        "title": "ID",
+                        "description": "ID",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Project"
+                }
+            },
+            "codification": {
+                "title": "codification",
+                "description": "Users codification",
+                "properties": {
+                    "id": {
+                        "title": "Identifiant",
+                        "type": "integer"
+                    },
+                    "n_inventaire": {
+                        "title": "N° inventaire",
+                        "type": "string"
+                    },
+                    "libelle_immo": {
+                        "title": "libelle immo",
+                        "type": "string"
+                    },
+                    "libelle_localisation": {
+                        "title": "libelle localisation",
+                        "type": "string"
+                    },
+                    "code_localisation": {
+                        "title": "code localisation",
+                        "type": "string"
+                    },
+                    "libelle_complementaire": {
+                        "title": "libelle complementaire",
+                        "type": "string"
+                    },
+                    "code_guichet": {
+                        "title": "code guichet",
+                        "type": "string"
+                    },
+                    "departement": {
+                        "title": "departement",
+                        "type": "string"
+                    },
+                    "n_serie": {
+                        "title": "n° série",
+                        "type": "string"
+                    },
+                    "direction": {
+                        "title": "direction",
+                        "type": "string"
+                    },
+                    "famille": {
+                        "title": "famille",
+                        "type": "string"
+                    },
+                    "sous_famille": {
+                        "title": "sous famille",
+                        "type": "string"
+                    },
+                    "libelle_famille": {
+                        "title": "libelle famille",
+                        "type": "string"
+                    },
+                    "sous_libelle_famille": {
+                        "title": "sous libelle famille",
+                        "type": "string"
+                    },
+                    "niveau": {
+                        "title": "niveau",
+                        "type": "string"
+                    },
+                    "service": {
+                        "title": "service",
+                        "type": "string"
+                    },
+                    "libelle_agence": {
+                        "title": "libelle agence",
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Codification"
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Projects",
+            "description": "API Endpoints of Projects"
+        }
+    ]
+}
