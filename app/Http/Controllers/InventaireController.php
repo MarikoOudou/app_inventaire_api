@@ -141,8 +141,8 @@ class InventaireController extends Controller
                 return self::sendResponse(false, Response::HTTP_NOT_FOUND, "La période n'exite pas", $periodeInventaireService);
             }
 
-            $inventaire = Inventaire::where( 'id_codification', '=', $request->all()['id_codification'],
-                'AND', 'id_periode_inventaire', '=', $request->all()['id_periode_inventaire']
+            $inventaire = Inventaire::where( 'id_codification', '=', $request->all()['id_codification'])
+            ->where('id_periode_inventaire', '=', $request->all()['id_periode_inventaire']
             )->first();
             if ($inventaire != null) {
                 DB::rollback();
@@ -341,15 +341,10 @@ class InventaireController extends Controller
     {
         try {
 
-            $inventaire = Inventaire::where(
-                'id_codification',
-                '=',
-                $id_codification,
-                'AND',
-                'id_periode_inventaire',
-                '=',
-                $id_periode_inventaire
-            )->first();
+            $inventaire = Inventaire::where('id_codification', '=', $id_codification)
+                ->where('id_periode_inventaire',  '=', $id_periode_inventaire)->first();
+
+            // dd($inventaire);
 
             if ( $inventaire == null) {
                 return self::sendResponse(
