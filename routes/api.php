@@ -23,6 +23,13 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 // Route::apiResource('users', UsersController::class);
+Route::get('index', function (Request $request) {
+    return [
+        "Name" => "Mariko",
+        "email" => "oudoumariko@gmail.com",
+        "reponse" => "ok"
+    ];
+});
 Route::get('users', [UsersController::class, 'index']);
 Route::post('users', [UsersController::class, 'store']);
 Route::post('user/email', [UsersController::class, 'findByEmail']);
