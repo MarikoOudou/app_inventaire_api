@@ -29,8 +29,10 @@ public class UsersController {
 
     @Operation(summary = "Get All user")
     @GetMapping("/users")
-    public List<Users> getAll() {
-        return usersServices.getAll();
+    public ResponseData getAll() {
+
+        return new ResponseData("liste des utilisateurs", true, (List<Users>) usersServices.getAll());
+
     }
 
     @Operation(summary = "Get user by id")

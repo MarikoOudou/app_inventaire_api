@@ -11,10 +11,10 @@ import io.swagger.v3.oas.annotations.Operation;
 @RestController
 public class index {
 
-    @Operation(summary = "Get All Codification")
+    @Operation(summary = "index")
     @GetMapping("/")
     public ResponseEntity<Object> getAllCodification() {
-        return ResponseEntity.ok("hello APP GEST-IMM");
+        return ResponseEntity.ok("Welcome to APP GEST-IMM");
     }
 
 }
