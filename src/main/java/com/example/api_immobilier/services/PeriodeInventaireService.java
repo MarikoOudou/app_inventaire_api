@@ -39,7 +39,7 @@ public class PeriodeInventaireService {
         if (((List<PeriodeInventaire>) result).size() > 0) {
 
             for (PeriodeInventaire element : (List<PeriodeInventaire>) result) {
-                element.setIsActive(false);
+                element.setActive(false);
             }
 
             periodeInventaireRepository.saveAll((List<PeriodeInventaire>) result);
@@ -60,14 +60,14 @@ public class PeriodeInventaireService {
             if (((List<PeriodeInventaire>) result).size() > 0) {
 
                 for (PeriodeInventaire element : (List<PeriodeInventaire>) result) {
-                    element.setIsActive(false);
+                    element.setActive(false);
                 }
 
                 periodeInventaireRepository.saveAll((List<PeriodeInventaire>) result);
 
             }
 
-            periodeInventaire.setIsActive(true);
+            periodeInventaire.setActive(true);
         }
 
         return periodeInventaireRepository.save(periodeInventaire);
