@@ -44,8 +44,8 @@ public class Codification {
     private String sous_libelle_famille;
     @Nullable
     private String libelle_complementaire;
-    @Nullable
-    private String code_localisation;
+    // @Nullable
+    // private String code_localisation;
     @Nullable
     private String niveau;
     @Nullable
